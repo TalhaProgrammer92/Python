@@ -88,7 +88,6 @@ class ToDoManager:
         if 0 <= value < len(self.__todo_lists):
             self.__index = value
 
-    @property
     def getListIndex(self, name: str) -> int:
         for index in range(len(self.__todo_lists)):
             if self.__todo_lists[index].name == name:
