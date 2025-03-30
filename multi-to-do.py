@@ -44,7 +44,7 @@ class ToDoList:
 
     def removeTask(self, id: int) -> None:
         """ Method to remove task """
-        self.__tasks.remove(self.__tasks[id])
+        self.__tasks.pop(id)
 
     def toggleDone(self, id: int) -> None:
         """ Method to toggle a task as done
@@ -108,7 +108,8 @@ class ToDoManager:
         """ Method to remove a to-do list """
         index: int = self.getListIndex(name)
         if index != -1:
-            self.__todo_lists.remove(self.__todo_lists[index])
+            # self.__todo_lists.remove(self.__todo_lists[index])
+            self.__todo_lists.pop(index)
         else:
             raise ValueError(f"{name} to-do list not found in available to-do lists")
 
