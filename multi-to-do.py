@@ -106,7 +106,7 @@ class ToDoManager:
 
     def removeList(self, name: str) -> None:
         """ Method to remove a to-do list """
-        index: int = self.__todo_lists[self.getListIndex(name)]
+        index: int = self.getListIndex(name)
         if index != -1:
             self.__todo_lists.remove(index)
         else:
