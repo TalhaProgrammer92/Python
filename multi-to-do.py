@@ -88,9 +88,36 @@ class ToDoManager:
         if 0 <= value < len(self.__todo_lists):
             self.__index = value
 
+    @property
+    def getListIndex(self, name: str) -> int:
+        for index in range(len(self.__todo_lists)):
+            if self.__todo_lists[index].name == name:
+                return index
+        return -1   # Indicate that no list was found
+
+    def showToDoListsNames(self) -> None:
+        """ Method to display all available to-do lists """
+        for todo in self.__todo_lists:
+            print(todo.name)
+        print(f'\nTotal: {len(self.__todo_lists)}')
+
     def addList(self, todo: ToDoList) -> None:
         """ Method to add a new to-do list """
         self.__todo_lists.append(todo)
+
+    def removeList(self, name: str) -> None:
+        """ Method to remove a to-do list """
+        index: int = self.__todo_lists[self.getListIndex(name)]
+        if index != -1:
+            self.__todo_lists.remove(index)
+        else:
+            raise ValueError(f"{name} to-do list not found in available to-do lists")
+
+    def displaySpecificTasks(self, completed: bool = False) -> None:
+        """ Method to filter and display only tasks which are either completed or not """
+        for task in self.__todo_lists[self.__index]:
+            if task.completed == completed:
+                print(task)
 
 
 # Debug
